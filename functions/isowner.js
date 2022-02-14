@@ -2,7 +2,7 @@ const fetch = require('node-fetch')
 
 const CONTRACT = process.env.CONTRACT_ADDRESS;
 const AUTH = process.env.NFTPORT_AUTH;
-const chain = "polygon";
+const chain = "rinkeby";
 const include = "metadata";
 
 exports.handler = async (event, context) => {
@@ -50,7 +50,7 @@ const getOwnedNfts = async (wallet, page) => {
   let editions = []
   try {
     const data = await fetchData(url + query, options)
-    console.log(`Recieved page ${page}`)
+    console.log(`Received page ${page}`)
     const total = data.total;
     const pages = Math.ceil(total / 50);
     data.nfts.forEach(nft => {
